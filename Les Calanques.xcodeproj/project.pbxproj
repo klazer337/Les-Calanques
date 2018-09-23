@@ -13,6 +13,8 @@
 		93AC3F21215813F300796C24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93AC3F1F215813F300796C24 /* Main.storyboard */; };
 		93AC3F23215813F400796C24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93AC3F22215813F400796C24 /* Assets.xcassets */; };
 		93AC3F26215813F400796C24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93AC3F24215813F400796C24 /* LaunchScreen.storyboard */; };
+		93AC3F3121583CB200796C24 /* Calanques.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC3F3021583CB200796C24 /* Calanques.swift */; };
+		93AC3F3321583ED500796C24 /* CalanqueCollections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC3F3221583ED500796C24 /* CalanqueCollections.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		93AC3F22215813F400796C24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93AC3F25215813F400796C24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93AC3F27215813F400796C24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93AC3F3021583CB200796C24 /* Calanques.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calanques.swift; sourceTree = "<group>"; };
+		93AC3F3221583ED500796C24 /* CalanqueCollections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalanqueCollections.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,8 @@
 		93AC3F2D21583BF800796C24 /* Modele */ = {
 			isa = PBXGroup;
 			children = (
+				93AC3F3021583CB200796C24 /* Calanques.swift */,
+				93AC3F3221583ED500796C24 /* CalanqueCollections.swift */,
 			);
 			path = Modele;
 			sourceTree = "<group>";
@@ -165,6 +171,8 @@
 				93AC3F1E215813F300796C24 /* SecondViewController.swift in Sources */,
 				93AC3F1A215813F300796C24 /* AppDelegate.swift in Sources */,
 				93AC3F1C215813F300796C24 /* FirstViewController.swift in Sources */,
+				93AC3F3121583CB200796C24 /* Calanques.swift in Sources */,
+				93AC3F3321583ED500796C24 /* CalanqueCollections.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

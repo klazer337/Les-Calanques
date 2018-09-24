@@ -50,7 +50,7 @@ class TableViewIntegreeController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {             //----- Hauteur de la Cell -----//
-        return 150
+        return 175
     }
     
 

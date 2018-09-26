@@ -175,14 +175,51 @@
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="w4X-AO-wZQ">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                            </mapView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ptc-qA-NMp">
+                                <rect key="frame" x="20" y="98" width="374" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="SLt-ou-x6a"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Standard"/>
+                                    <segment title="Satellite"/>
+                                    <segment title="Hybride"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedChanged:" destination="8rJ-Kc-sve" eventType="valueChanged" id="5oP-L8-prm"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="w4X-AO-wZQ" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" id="0H6-8P-PCM"/>
+                            <constraint firstItem="w4X-AO-wZQ" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="7j3-Fy-4Of"/>
+                            <constraint firstItem="w4X-AO-wZQ" firstAttribute="trailing" secondItem="O1u-W8-tvY" secondAttribute="trailing" id="DAM-tX-YQ0"/>
+                            <constraint firstItem="Ptc-qA-NMp" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="10" id="fgx-sR-09r"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="Ptc-qA-NMp" secondAttribute="trailing" constant="20" id="gsS-kG-2nz"/>
+                            <constraint firstItem="Ptc-qA-NMp" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="20" id="mee-wS-LDP"/>
+                            <constraint firstItem="w4X-AO-wZQ" firstAttribute="bottom" secondItem="O1u-W8-tvY" secondAttribute="bottom" id="uIk-Qc-3mc"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="HdF-nT-BeD"/>
+                    <navigationItem key="navigationItem" id="HdF-nT-BeD">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="placeholder" id="jQz-iL-XvN">
+                            <connections>
+                                <action selector="getPosition:" destination="8rJ-Kc-sve" id="Ddt-2h-GHL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="w4X-AO-wZQ" id="ZM7-f0-fy8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1626.0869565217392" y="752.44565217391312"/>
+            <point key="canvasLocation" x="1626.0869565217392" y="752.00892857142856"/>
         </scene>
         <!--Table View Integree Controller-->
         <scene sceneID="dzf-VJ-B6h">
@@ -399,7 +436,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9fC-3U-Umy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-901.44927536231887" y="0.0"/>
+            <point key="canvasLocation" x="-1159" y="0.0"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -418,7 +455,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="-317" y="0.0"/>
         </scene>
         <!--TableView 1-->
         <scene sceneID="wP8-tC-Q8w">
@@ -482,6 +519,7 @@
         <image name="callelongue" width="329.14285278320312" height="219.29142761230469"/>
         <image name="earth" width="25.600000381469727" height="25.600000381469727"/>
         <image name="list" width="25.600000381469727" height="25.600000381469727"/>
+        <image name="placeholder" width="32" height="32"/>
         <image name="port pin" width="245.75999450683594" height="164.16000366210938"/>
         <image name="sugiton" width="1600" height="896"/>
     </resources>

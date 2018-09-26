@@ -17,11 +17,19 @@ class ControllerAvecCarte: UIViewController {
     }
     
     
-    @IBAction func segmentedChanged(_ sender: Any) {
+    @IBAction func segmentedChanged(_ sender: UISegmentedControl) { // les différents types de cartes
+        switch sender.selectedSegmentIndex {
+        case 0: mapView.mapType = MKMapType.standard
+        case 1: mapView.mapType = .satellite
+        case 2: mapView.mapType = .hybrid
+        default: break
+        }
     }
     
     
     @IBAction func getPosition(_ sender: Any) {
+        
+        
     }
 
 

@@ -8,6 +8,8 @@
 
 import UIKit
 
+let segueID = "Detail"
+
 class TableViewIntegreeController: UITableViewController {
     
     var calanques: [Calanque] = []
@@ -45,7 +47,6 @@ class TableViewIntegreeController: UITableViewController {
             cell.imageView?.image = calanque.image
             return cell
         }
-        
     }
     
     
@@ -53,6 +54,18 @@ class TableViewIntegreeController: UITableViewController {
         return 175
     }
     
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {        // sélection de la row
+        performSegue(withIdentifier: segueID, sender: calanques[indexPath.row])
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {                             // préparation de la segue
+        if segue.identifier == segueID {
+            if let vc = segue.destination as? DetailController {
+                vc.calanqueRecue = sender as? Calanque
+            }
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -62,17 +75,21 @@ class TableViewIntegreeController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+            calanques.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }  
     }
-    */
+    
+    
+    @IBAction func reloadAction(_ sender: Any) {
+        calanques = CalanqueCollection().all()  // on récupère toutes les calanques
+        tableView.reloadData()          // on recharge la tableView
+    }
+    
 
     /*
     // Override to support rearranging the table view.

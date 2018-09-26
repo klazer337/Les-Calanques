@@ -10,6 +10,7 @@
 		936D220D21598ECF00C606E9 /* CalanqueCellAlternative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936D220C21598ECF00C606E9 /* CalanqueCellAlternative.swift */; };
 		937497CF215AE99C00C978D7 /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937497CE215AE99C00C978D7 /* DetailController.swift */; };
 		937497D1215C183E00C978D7 /* Bouton Arrondi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937497D0215C183E00C978D7 /* Bouton Arrondi.swift */; };
+		937497D3215C20F100C978D7 /* MonAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937497D2215C20F100C978D7 /* MonAnnotation.swift */; };
 		93AC3F1A215813F300796C24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC3F19215813F300796C24 /* AppDelegate.swift */; };
 		93AC3F21215813F300796C24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93AC3F1F215813F300796C24 /* Main.storyboard */; };
 		93AC3F23215813F400796C24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93AC3F22215813F400796C24 /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 		936D220C21598ECF00C606E9 /* CalanqueCellAlternative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalanqueCellAlternative.swift; sourceTree = "<group>"; };
 		937497CE215AE99C00C978D7 /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		937497D0215C183E00C978D7 /* Bouton Arrondi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bouton Arrondi.swift"; sourceTree = "<group>"; };
+		937497D2215C20F100C978D7 /* MonAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonAnnotation.swift; sourceTree = "<group>"; };
 		93AC3F16215813F300796C24 /* Les Calanques.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Les Calanques.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93AC3F19215813F300796C24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93AC3F20215813F300796C24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 			children = (
 				93AC3F3021583CB200796C24 /* Calanques.swift */,
 				93AC3F3221583ED500796C24 /* CalanqueCollections.swift */,
+				937497D2215C20F100C978D7 /* MonAnnotation.swift */,
 			);
 			path = Modele;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 				93AC3F392158405000796C24 /* TableViewIntegreeController.swift in Sources */,
 				93AC3F1A215813F300796C24 /* AppDelegate.swift in Sources */,
 				93AC3F3B2158469200796C24 /* CalanqueCell.swift in Sources */,
+				937497D3215C20F100C978D7 /* MonAnnotation.swift in Sources */,
 				93AC3F3121583CB200796C24 /* Calanques.swift in Sources */,
 				93AC3F372158402700796C24 /* ControllerAvecCarte.swift in Sources */,
 				937497D1215C183E00C978D7 /* Bouton Arrondi.swift in Sources */,

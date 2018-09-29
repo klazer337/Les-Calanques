@@ -9,18 +9,46 @@
 import UIKit
 import MapKit
 
-class ControllerAvecCarte: UIViewController, MKMapViewDelegate {
+class ControllerAvecCarte: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
+    var locationManager = CLLocationManager()
+    var userPosition: CLLocation?
     var calanques: [Calanque] = CalanqueCollection().all()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self     // nécessaire suite à l'héritage du MKMapViewDelegate
+        locationManager.delegate = self
+        mapView.showsUserLocation = true    // montre la position de l'utilisateur
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()     // Demande si on peut localiser l'utilisateur 
         addAnnotation()
         NotificationCenter.default.addObserver(self, selector: #selector(notifDetail), name: Notification.Name("detail"), object: nil)  // Ecoute les notifications
+        if calanques.count > 5 {            // Centrer la vue sur les calanques
+            let premiere = calanques[0].coordonnee
+            setupMap(coordonnees: premiere)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if locations.count > 0 {
+            if let maPosition = locations.last {
+                userPosition = maPosition
+                
+            }
+        }
+    }
+    
+    
+    // centrer la carte
+    func setupMap(coordonnees: CLLocationCoordinate2D) {
+        let span = MKCoordinateSpan(latitudeDelta: 0.35, longitudeDelta: 0.35)      // 0.01 -> rue || 4 -> très loin
+        let region = MKCoordinateRegion(center: coordonnees, span: span)        // définir une région
+        mapView.setRegion(region, animated: true)
+        
     }
     
     @objc func notifDetail(notification: Notification) {
@@ -99,7 +127,9 @@ class ControllerAvecCarte: UIViewController, MKMapViewDelegate {
     
     
     @IBAction func getPosition(_ sender: Any) {
-        
+        if userPosition != nil {
+            setupMap(coordonnees: userPosition!.coordinate)
+        }
         
     }
 

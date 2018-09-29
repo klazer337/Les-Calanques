@@ -18,25 +18,26 @@ class ControllerAvecCarte: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mapView.delegate = self
+        mapView.delegate = self     // nécessaire suite à l'héritage du MKMapViewDelegate
         addAnnotation()
     }
     
     func addAnnotation() {
         for calanque in calanques {
             
+            // Annotation Custom - V2
+            let annotation = MonAnnotation(calanque)
+            mapView.addAnnotation(annotation)
+            
             /* //------- V1 Annotation de base
             let annotation = MKPointAnnotation()
             annotation.coordinate = calanque.coordonnee
             annotation.title = calanque.nom
             mapView.addAnnotation(annotation) */
-            
-            // Annotation Custom
-            let annotation = MonAnnotation(calanque)
-            mapView.addAnnotation(annotation)
         }
     }
     
+    // Annotations sur la carte
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let reuseIdentifier = "reuseID"
         
@@ -45,12 +46,13 @@ class ControllerAvecCarte: UIViewController, MKMapViewDelegate {
             return nil
         }
         
-        if let anno = annotation as? MonAnnotation {
+        if let anno = annotation as? MonAnnotation {                                                // -----------  annotation personnalisée --------- //
             var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier)
             if annotationView == nil {
-                annotationView = MKAnnotationView(annotation: anno, reuseIdentifier: reuseIdentifier)
-                annotationView?.image = UIImage(named: "placeholder")
-                annotationView?.canShowCallout = true
+                annotationView = MonAnnotationView(annotation: anno, reuseIdentifier: reuseIdentifier)
+                //annotationView = MKAnnotationView(annotation: anno, reuseIdentifier: reuseIdentifier)
+                //annotationView?.image = UIImage(named: "placeholder")
+                //annotationView?.canShowCallout = true
                 return annotationView
             } else {
                 return annotationView

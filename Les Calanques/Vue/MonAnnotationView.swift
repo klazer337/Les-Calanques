@@ -79,8 +79,13 @@ class MonAnnotationView: MKAnnotationView {
         NotificationCenter.default.post(name: Notification.Name("detail"), object: anno.calanque)
     }
     
+    // Fonction du GPS
     @objc func gps() {
-        
+        guard let anno = annotation as?  MonAnnotation else { return }
+        let placemark = MKPlacemark(coordinate: anno.coordinate)
+        let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]  // Walking pour le type de GPS
+        let map = MKMapItem(placemark: placemark)
+        map.openInMaps(launchOptions: options)
     }
 
 }

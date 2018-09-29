@@ -11,6 +11,14 @@ import MapKit
 
 class MonAnnotationView: MKAnnotationView {
     
+    var controller: ControllerAvecCarte?
+    
+    init(controller: ControllerAvecCarte,annotation: MKAnnotation?, reuseIdentifier: String?) {
+        self.controller = controller
+        super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
+        setupAnnotation()
+    }
+    
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         setupAnnotation()
@@ -34,14 +42,14 @@ class MonAnnotationView: MKAnnotationView {
     func setupleft() -> UIButton {      // signe distance à gauche du popup
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         button.setImage(UIImage(named: "distance"), for: .normal)
-        button.addTarget(self, action: #selector(detail), for: .touchUpInside)      // donne une action sur le bouton
+        button.addTarget(self, action: #selector(gps), for: .touchUpInside)      // donne une action sur le bouton
         return button
     }
     
     func setupRight() -> UIButton {             // signe distance à gauche du popup
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         button.setImage(UIImage(named: "detail"), for: .normal)
-        button.addTarget(self, action: #selector(gps), for: .touchUpInside)      // donne une action sur le bouton
+        button.addTarget(self, action: #selector(detail), for: .touchUpInside)      // donne une action sur le bouton
         return button
     }
     
@@ -62,7 +70,13 @@ class MonAnnotationView: MKAnnotationView {
     }
     
     @objc func detail() {
+        guard let anno = annotation as? MonAnnotation else { return }
         
+        //-V1
+        //controller?.toDetail(calanque: anno.calanque)
+        
+        //-V2
+        NotificationCenter.default.post(name: Notification.Name("detail"), object: anno.calanque)
     }
     
     @objc func gps() {

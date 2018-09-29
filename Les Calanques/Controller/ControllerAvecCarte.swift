@@ -20,6 +20,26 @@ class ControllerAvecCarte: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         mapView.delegate = self     // nécessaire suite à l'héritage du MKMapViewDelegate
         addAnnotation()
+        NotificationCenter.default.addObserver(self, selector: #selector(notifDetail), name: Notification.Name("detail"), object: nil)  // Ecoute les notifications
+    }
+    
+    @objc func notifDetail(notification: Notification) {
+        if let calanque = notification.object as? Calanque {
+            print ("Jai une calanque")
+            toDetail(calanque: calanque)
+        }
+    }
+    
+    func toDetail(calanque: Calanque) {
+        performSegue(withIdentifier: "Detail", sender: calanque)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Detail" {
+            if let controller = segue.destination as? DetailController {
+                controller.calanqueRecue = sender as? Calanque
+            }
+        }
     }
     
     func addAnnotation() {
@@ -49,7 +69,12 @@ class ControllerAvecCarte: UIViewController, MKMapViewDelegate {
         if let anno = annotation as? MonAnnotation {                                                // -----------  annotation personnalisée --------- //
             var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier)
             if annotationView == nil {
-                annotationView = MonAnnotationView(annotation: anno, reuseIdentifier: reuseIdentifier)
+                
+                // override
+                //annotationView = MonAnnotationView(annotation: anno, reuseIdentifier: reuseIdentifier)
+                
+                annotationView = MonAnnotationView(controller: self, annotation: anno, reuseIdentifier: reuseIdentifier)
+                
                 //annotationView = MKAnnotationView(annotation: anno, reuseIdentifier: reuseIdentifier)
                 //annotationView?.image = UIImage(named: "placeholder")
                 //annotationView?.canShowCallout = true

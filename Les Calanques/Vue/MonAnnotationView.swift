@@ -25,7 +25,11 @@ class MonAnnotationView: MKAnnotationView {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        //fatalError("init(coder:) has not been implemented")
+        //super.init(coder: aDecoder)
+        //setupAnnotation()
+        
+        //init(coder:) has not been implemented
         super.init(coder: aDecoder)
         setupAnnotation()
     }
@@ -83,6 +87,7 @@ class MonAnnotationView: MKAnnotationView {
     @objc func gps() {
         guard let anno = annotation as?  MonAnnotation else { return }
         let placemark = MKPlacemark(coordinate: anno.coordinate)
+        //let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]  // Walking pour le type de GPS
         let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]  // Walking pour le type de GPS
         let map = MKMapItem(placemark: placemark)
         map.openInMaps(launchOptions: options)
